@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CleanArchitecture.Domain.Models
 {
-    class Course
+    public class Course
     {
         public int Id { get; set; }
         public string Name { get; set; }

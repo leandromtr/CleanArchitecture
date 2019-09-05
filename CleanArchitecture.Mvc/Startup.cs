@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using CleanArchitecture.Mvc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CleanArchitecture.Infra.Data.Context;
 
 namespace CleanArchitecture.Mvc
 {
@@ -37,10 +38,14 @@ namespace CleanArchitecture.Mvc
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("IdentityDBConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDbContext<CleanArchitectureDBContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultDBConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
