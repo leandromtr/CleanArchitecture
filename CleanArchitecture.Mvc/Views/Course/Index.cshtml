@@ -1,11 +1,11 @@
-﻿@model  CleanArchitecture.Application.ViewModels.CourseViewModel
+﻿@model  IEnumerable<CleanArchitecture.Application.ViewModels.CourseViewModel>
 
 <div class="container cody-content">
     <div class="row cody-content">
-        @foreach(var course in Model.Courses)
+        @foreach(var course in Model)
         {
             <div class="course-image-container">
-                <div class="course-image" style="background-image:url(@course.ImageUrl)"></div>
+                <div class="course-image" style="background-image:url(@course.ImageURL)"></div>
             </div>
             <span>@course.Name</span>
         }

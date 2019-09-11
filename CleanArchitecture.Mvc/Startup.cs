@@ -15,6 +15,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CleanArchitecture.Infra.Data.Context;
 using CleanArchitecture.Infra.IoC;
+using MediatR;
+using CleanArchitecture.Mvc.Controllers;
 
 namespace CleanArchitecture.Mvc
 {
@@ -49,6 +51,10 @@ namespace CleanArchitecture.Mvc
                     Configuration.GetConnectionString("DefaultDBConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMediatR(typeof(Startup));
+
+            services.RegisterAutoMapper();
 
             RegisterServices(services);
 

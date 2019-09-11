@@ -14,7 +14,7 @@ namespace CleanArchitecture.Infra.Bus
 
         public InMemoryBus(IMediator mediator)
         {
-            mediator = _mediator;
+            _mediator = mediator;
         }
 
         public Task SendCommand<T>(T command) where T: Command
